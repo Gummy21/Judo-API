@@ -1,27 +1,45 @@
+const seedDb = require("./seed/seed");
+
 const express = require("express"),
       app = express(),
       cors = require("cors");
 
 require("dotenv").config();
 
+
 db = require("./models/index");
 db.moves = require("./models/moves");
 
 Op = db.Sequelize.Op;
+db.sequelize.sync({ logging: console.log});
 
-db.sequelize.sync({ logging: console.log });
+// require("./seed/seed")
+// seedDb()
+
+
+const corsOptions = {
+  origin: 'http://localhost:4200',
+  optionsSuccessStatus: 200 
+}
+
+app.use(cors())
 
 app.get("/moves", function (req, res) {
   
+  let category =  req.query.category;
+  if(category == 0 ||category == undefined ||category == null){
+    category = {[Op.like]:'%'}
+  }
   const query = {
-    name: req.query.name,
-    category: req.query.category || {[Op.like]:'%'}
+    name: req.query.name || {[Op.like]:'%'},
+    category: category
   };
 
+  
   db.moves
     .findAll({ where: query })
     .then((moves) => {
-      console.log(moves);
+      
       res.send(moves);
     })
     .catch((err) => {
@@ -37,8 +55,9 @@ app.get("/moves", function (req, res) {
 
 
 app.get("/:id", function (req, res) {
-  let id = requ.params.id
+  let id = req.params.id
   const condition = id ? {id: id}: null
+
   db.moves
     .findAll({ where: condition })
     .then((single) => {
