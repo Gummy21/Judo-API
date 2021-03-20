@@ -13,8 +13,8 @@ db.moves = require("./models/moves");
 Op = db.Sequelize.Op;
 db.sequelize.sync({ logging: console.log});
 
-// require("./seed/seed")
-// seedDb()
+require("./seed/seed")
+seedDb()
 
 
 const corsOptions = {
