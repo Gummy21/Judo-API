@@ -9,7 +9,11 @@ const Moves = db.sequelize.define('moves', {
     name:{
       type:db.Sequelize.TEXT,
       allowNull:false
-    }, 
+    },
+    description_title:{
+      allowNull:false,
+      type: db.Sequelize.TEXT
+    },
     description:{
       allowNull:false,
       type: db.Sequelize.TEXT
