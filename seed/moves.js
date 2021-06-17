@@ -141,7 +141,7 @@ const seedMoves = [
         description:'A hip technique throw. Use your grips on your opponent’s collar and sleeve to break his balance to his front or right front corner, than drop your hips to the level of his thighs, then raise them again while pilling with both hands to throw him over your hips.',
         category:'2',
         img:'https://i.ibb.co/qCNQ67v/tsuri-komi-goshi-1-med-hr.jpg',
-        video:'https://www.youtube.coembed/4HJumX7ArOI',
+        video:'https://www.youtube.com/embed/4HJumX7ArOI',
         backup_vid:'' || null
     }, {
         name:'Sode-tsurikomi-goshi (sleeve lift-pull hip throw)',
