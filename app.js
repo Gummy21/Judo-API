@@ -1,4 +1,3 @@
-const seedDb = require("./seed/seed");
 
 const express = require("express"),
       app = express(),
