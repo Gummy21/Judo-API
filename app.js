@@ -31,7 +31,7 @@ app.get("/moves", function (req, res) {
     category = {[Op.like]:'%'}
   }
   const query = {
-    name: req.query.name || {[Op.like]:'%'},
+    name: {[Op.like]:`%${req.query.name}%`},
     category: category
   };
 
